@@ -1,0 +1,286 @@
+.header {
+    padding: 35px;
+    text-align: center;
+    background: #cc7474;
+    color: white;
+    font-size: 15px;
+  }
+
+.btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #3e8e41;
+}
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=number] {
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #00C4FF;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+  opacity: 0.6;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 5%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+/* Table Styles */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+/* For tables side by side */
+
+#basic_info {
+  display: flex;
+  flex-wrap: nowrap; 
+  justify-content: space-evenly;
+  padding: 25px;
+}
+
+.block {
+  width: 25%;
+}
+
+#medical_info {
+  padding: 25px
+}
+
+#drug_info {
+  padding: 25px
+}
+
+#basic_drug_info{
+  padding-top: 10px;
+}
+
+#basic_drug_info_right{
+  display: flex;
+  justify-content: center;
+}
+
+#basic_drug_info_left{
+  display: flex;
+  justify-content: center;
+}
+
+#basic_drug_info input[type=text]{ 
+  width: 35%;
+  padding: 12px 20px;
+  margin: 8px 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#basic_drug_info label{
+  display: flex;
+  justify-content: center;
+}
+
+#case_delete_btn {
+  background-color:#f44336;
+  color: white;
+  padding: 10px;
+  /*margin: 8px 0; */
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+#case_delete_btn:hover {
+opacity: 0.6;
+}
+
+#case_view_btn {
+  background-color: #00C4FF;
+  color: white;
+  padding: 10px;
+  margin: 0px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+#case_view_btn:hover {
+  opacity: 0.6;
+  }
+
+#case_info_cell {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 10px;
+  height: 10px;
+  text-overflow: ellipsis; 
+}
+
+#result_tb {
+  table-layout: fixed;
+  margin-top: 10px;
+}
+
+#result_tb tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+#result_tb tr, td, th {
+  border: 1px solid grey;
+}
