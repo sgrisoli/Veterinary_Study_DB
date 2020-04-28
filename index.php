@@ -55,6 +55,7 @@
     </head>
 <body>
 
+    <!-- Master Dropdown menus -->
     <div class="dropdown" style="width:33%">
     <button class="dropbtn">Cases</button>
         <div class="dropdown-content">
@@ -81,25 +82,6 @@
             <button onclick="window.location.href = 'exp_hours/view_hours.php'">View Experience Hours</button>
         </div>
     </div>
-
-
-    <!-- Master Control Buttons
-    <div class="btn-group" style="width:100%">
-        <button style="width:16.66%" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Case</button>
-        <button style="width:16.66%" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Edit Case</button>
-        <button style="width:16.66%" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Search Case</button>
-        <button style="width:16.66%" onclick="document.getElementById('id04').style.display='block'" style="width:auto;">Delete Case</button>
-        <button style="width:16.66%" onclick="window.location.href = 'exp_hours/add_select_hours.php'">Add Experience Hours</button>
-        <button style="width:16.66%" onclick="window.location.href = 'exp_hours/view_hours.php'">View Experience Hours</button>
-    </div>
-
-    <div class="btn-group" style="width:100%">
-        <button style="width:33.33%" onclick="document.getElementById('id05').style.display='block'" style="width:auto;">Add Drug</button>
-        <button style="width:33.33%" onclick="document.getElementById('id06').style.display='block'" style="width:auto;">Edit Drug</button>
-        <button style="width:33.33%" onclick="document.getElementById('id07').style.display='block'" style="width:auto;">Search/Delete Drug</button>
-    </div>
-    --
-
 
     <!--------- Case insert modal ---------->
     <div id="id01" class="modal">
@@ -220,7 +202,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dynamic_field">
                         <tr>
-                            <td><input type="text" name="name[]" placeholder="Query" class="form-control name_list" required></td>
+                            <td><input type="text" name="name[]" placeholder="Query" class="form-control name_list"></td>
                             <td><select name='search_select[]' id='search_select' onchange="popup(value)" required>
                                     <option value="" disabled selected>Select Field</option>
                                     <option value=case_num>Case Number</option>

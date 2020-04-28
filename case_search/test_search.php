@@ -65,11 +65,11 @@ if(!empty($result_arr)){
                     echo "<th width='55px' style='text-align:center'>Sex</th>";
                     echo "<th width='35px' style='text-align:center'>Age</th>";
                     echo "<th width='55px' style='text-align:center'>Weight</th>";
-                    echo "<th width='60px' style='text-align:center'>Chip #</th>";
-                    echo "<th style='text-align:center'>Symptoms</th>";
-                    echo "<th style='text-align:center'>Diagnosis</th>";
-                    echo "<th style='text-align:center'>Treatment</th>";
-                    echo "<th style='text-align:center'>Drugs Used</th>";
+                    echo "<th width='61px' style='text-align:center'>Chip #</th>";
+                    echo "<th width='61px' style='text-align:center'>Symptoms</th>";
+                    echo "<th width='61px' style='text-align:center'>Diagnosis</th>";
+                    echo "<th width='61px' style='text-align:center'>Treatment</th>";
+                    echo "<th width='61px' style='text-align:center'>Drugs Used</th>";
                 echo "</tr>";
             break;
         }
