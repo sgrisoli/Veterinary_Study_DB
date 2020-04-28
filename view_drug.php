@@ -20,7 +20,6 @@
     }
 ?>
 
-
 <html>
 <head>
     <title><?php echo $name . " Info"?> </title>

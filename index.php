@@ -14,7 +14,6 @@
     //DB connection
     $dir = getcwd();
     $db = new SQLite3($dir . "/vet_case_study.db");
-    //$db = new SQLite3('/Users/stephengrisoli/Desktop/vet_case_db/vet_case_study.db');
     
     //Query to get all case numbers for comparison
     $res = $db->query('SELECT case_num, username FROM cases');
@@ -47,16 +46,44 @@
         <link rel="stylesheet" href="styles/styles.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <title>Veterninary Case Study DB</title>
+        <title>VetCentral</title>
         <div class="header">
-        <h1>Vet Case Database</h1>
-        <h2>Stephen Grisoli</h2>
+            <h1>VetCentral</h1>
+            <h2>Veterinary Study Toolkit and Database
         </div>
 
     </head>
 <body>
 
-    <!-- Change width if number of buttons change -->
+    <div class="dropdown" style="width:33%">
+    <button class="dropbtn">Cases</button>
+        <div class="dropdown-content">
+            <button onclick="document.getElementById('id01').style.display='block'">New Case</button>
+            <button onclick="document.getElementById('id02').style.display='block'">Edit Case</button>
+            <button onclick="document.getElementById('id03').style.display='block'">Search Case</button>
+            <button onclick="document.getElementById('id04').style.display='block'">Delete Case</button>
+        </div>
+    </div>
+
+    <div class="dropdown" style="width:33%">
+    <button class="dropbtn">Drugs</button>
+        <div class="dropdown-content">
+            <button onclick="document.getElementById('id05').style.display='block'">Add Drug</button>
+            <button onclick="document.getElementById('id06').style.display='block'">Edit Drug</button>
+            <button onclick="document.getElementById('id07').style.display='block'">Search/Delete Drug</button>
+        </div>
+    </div>
+
+    <div class="dropdown" style="width:33%">
+    <button class="dropbtn">Experience Hours</button>
+        <div class="dropdown-content">
+            <button onclick="window.location.href = 'exp_hours/add_select_hours.php'">Add Experience Hours</button>
+            <button onclick="window.location.href = 'exp_hours/view_hours.php'">View Experience Hours</button>
+        </div>
+    </div>
+
+
+    <!-- Master Control Buttons
     <div class="btn-group" style="width:100%">
         <button style="width:16.66%" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Case</button>
         <button style="width:16.66%" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Edit Case</button>
@@ -71,6 +98,7 @@
         <button style="width:33.33%" onclick="document.getElementById('id06').style.display='block'" style="width:auto;">Edit Drug</button>
         <button style="width:33.33%" onclick="document.getElementById('id07').style.display='block'" style="width:auto;">Search/Delete Drug</button>
     </div>
+    --
 
 
     <!--------- Case insert modal ---------->
@@ -79,7 +107,7 @@
     <form class="modal-content animate" action="case_insert/case_insert.php" id="insert_form" method="POST" enctype="multipart/form-data" class="form-control name_list">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="web_images/macy.png" alt="Avatar" class="avatar">
+      <img src="web_images/avatar_img.jpg" alt="Avatar" class="avatar">
       <header><b>Add New Case</b></header>
     </div>
 
@@ -143,7 +171,7 @@
     <form class="modal-content animate" action="case_edit/case_edit.php" method="post">
     <div class="imgcontainer">
         <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <img src="web_images/macy.png" alt="Avatar" class="avatar">
+        <img src="web_images/avatar_img.jpg" alt="Avatar" class="avatar">
         <header><b>Edit Case</b></header>
     </div>
 
@@ -153,7 +181,7 @@
         <p id="check_case"></p>
 
         <label for='update_select'><b>Field to Edit</b></label>
-        <select name='update_select' id='update_select' onchange="test_case_num()">
+        <select name='update_select' id='update_select' onchange="test_case_num()" required>
             <option value="" disabled selected>Select Field</option>
             <option value=name>Name</option>
             <option value=species>Species</option>
@@ -186,14 +214,14 @@
         <form name="add_name" id="add_name" class="modal-content animate" action="case_search/test_search.php" method="GET">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="web_images/macy.png" alt="Avatar" class="avatar">
+                <img src="web_images/avatar_img.jpg" alt="Avatar" class="avatar">
                 <header><b>Search Cases by Fields</b></header>
             </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dynamic_field">
                         <tr>
-                            <td><input type="text" name="name[]" placeholder="Query" class="form-control name_list"></td>
-                            <td><select name='search_select[]' id='search_select' onchange="popup(value)">
+                            <td><input type="text" name="name[]" placeholder="Query" class="form-control name_list" required></td>
+                            <td><select name='search_select[]' id='search_select' onchange="popup(value)" required>
                                     <option value="" disabled selected>Select Field</option>
                                     <option value=case_num>Case Number</option>
                                     <option value=name>Name</option>
@@ -225,7 +253,7 @@
     <form class="modal-content animate" action="case_delete/case_delete.php" method="POST">
     <div class="imgcontainer">
         <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <img src="web_images/macy.png" alt="Avatar" class="avatar">
+        <img src="web_images/avatar_img.jpg" alt="Avatar" class="avatar">
         <header><b>Delete Case</b></header>
     </div>
 
@@ -250,7 +278,7 @@
     <form class="modal-content animate" action="drug_insert/drug_insert.php" id="drug_insert_form" method="POST" enctype="multipart/form-data" class="form-control name_list">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="web_images/macy.png" alt="Avatar" class="avatar">
+      <img src="web_images/avatar_img.jpg" alt="Avatar" class="avatar">
       <header style="font-size:20px"><b>Add New Drug</b></header>
     </div>
 
@@ -302,7 +330,7 @@
     <form class="modal-content animate" action="drug_edit/drug_edit.php" method="post">
     <div class="imgcontainer">
         <span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <img src="web_images/macy.png" alt="Avatar" class="avatar">
+        <img src="web_images/avatar_img.jpg" alt="Avatar" class="avatar">
         <header><b>Edit Drug</b></header>
     </div>
 
@@ -341,7 +369,7 @@
         <form name="add_name" id="add_name" class="modal-content animate" action="drug_search/drug_search.php" method="GET">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id07').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="web_images/macy.png" alt="Avatar" class="avatar">
+                <img src="web_images/avatar_img.jpg" alt="Avatar" class="avatar">
                 <header><b>Search Drug by Fields</b></header>
             </div>
                 <div class="table-responsive">
@@ -371,7 +399,54 @@
     </div>
 
 
+    <!-- Slideshow container -->
+<div class="slideshow-container">
+
+<!-- Full-width images with number and caption text -->
+<div class="mySlides fade">
+  <div class="numbertext">1 / 4</div>
+  <img src="web_images/veterinary_logo.jpg" style="width:auto; height:45%" class="center">
+  <div class="text">Your Hub for Veterinary Learning</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 4</div>
+  <img src="web_images/animals_slideshow.jpg" style="width:auto; height:45%" class="center">
+  <div class="text">Store Animal Specific Drug Information</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 4</div>
+  <img src="web_images/dog_xray.jpg" style="width:auto%; height:45%" class="center">
+  <div class="text">Image Storage Capabilities for Cases</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 4</div>
+  <img src="web_images/exp_hours.jpg" style="width:auto%; height:45%" class="center">
+  <div class="text">Veterinary Experience Hour Tracking</div>
+</div>
+
+<!-- Next and previous buttons -->
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+<span class="dot" onclick="currentSlide(1)"></span>
+<span class="dot" onclick="currentSlide(2)"></span>
+<span class="dot" onclick="currentSlide(3)"></span>
+<span class="dot" onclick="currentSlide(4)"></span>
+
+</div>
+
+
 </body>
+
+
+
 
 <script>
 $(document).ready(function(){
@@ -476,37 +551,23 @@ function test_case_num(){
 
     //Recieve array from php
     var passed_array = <?php echo json_encode($data); ?>;
-    var user = <?php echo json_encode($user); ?>;
 
     //Get value user has typed into username filed
     var current_case = document.getElementById("case_num").value;
     var field = document.getElementById("update_select").value;
-    
-    var i = 0;
 
+    var i = 0;
     //Compare potential username with all taken usernames
     for(i = 0; i <= passed_array.length; i++){
-       // document.getElementById("check_case").innerHTML = "";
-        
+        document.getElementById("edit_case_btn").style.display='none';
+        document.getElementById("check_case").innerHTML = 'Case Does Not Exist';
+
         //Case num matches case and field is selected
-        if(current_case == passed_array[i]["case_num"] && field.length > 0 && user == passed_array[i]["username"]){
+        if(current_case == passed_array[i]["case_num"]){
             document.getElementById("edit_case_btn").style.display='block';
+            document.getElementById("check_case").innerHTML = '';
             break;
-
-        //Case number is correct but no field selected
-        } else if(field.length == 0){
-            document.getElementById("check_case").innerHTML = "Please Select a Field";
-            //break;
-
-        //Nothing has been typed
-        } else if(current_case.length == 0){
-            document.getElementById("check_case").innerHTML = "";
-            document.getElementById("edit_case_btn").style.display='none';
-
-        //Trying to edit another user's 
-        } else if(user != passed_array[i]["username"]){
-            document.getElementById("check_case").innerHTML = "You can only edit cases that you have added";
-        } 
+        }
     }
 }
 
@@ -544,7 +605,6 @@ function button_bool(value){
 function test_del_case_num(){
     //Recieve array from php
     var passed_array = <?php echo json_encode($data); ?>;
-    var user = <?php echo json_encode($user); ?>;
 
     //Get user input
     var case_num = document.getElementById('del_case_num').value;
@@ -555,16 +615,14 @@ function test_del_case_num(){
     //Compare potential username with all taken usernames
     for(var i = 0; i <= passed_array.length; i++){
         document.getElementById("delete_case_btn").style.display='none';
+        document.getElementById("check_delete_case").innerHTML = "Case Does Not Exist";
         
         //Case num matches case and field is selected
-        if(case_num == passed_array[i]["case_num"] && user == passed_array[i]["username"]){
+        if(case_num == passed_array[i]["case_num"]){
             document.getElementById("delete_case_btn").style.display='block';
             document.getElementById("check_delete_case").innerHTML = "";
             break;
-        //Shouldn't be able to delete this case
-        } else{
-            document.getElementById("check_delete_case").innerHTML = "You can only delete your cases";
-        }
+        } 
     }
 }
 
@@ -618,6 +676,27 @@ String.prototype.ucwords = function() {
         function($1){
             return $1.toUpperCase();
         });
+}
+
+//Slideshow JS
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 7000); // Change image every 2 seconds
 }
 </script>
 </html>

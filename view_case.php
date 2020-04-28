@@ -35,11 +35,6 @@ while($row = $res->fetchArray()){
     $image_data[] = $row;
 }
 
-
-for($i=0; $i<sizeof($image_data); $i++){
-//    echo "<img style=\"max-width:25%; height:auto\" src=\"./web_images/uploads/" . $image_data[$i][0] . "\"alt=\"failure\">";
-}
-
 ?>
 
 <html>
@@ -115,9 +110,47 @@ for($i=0; $i<sizeof($image_data); $i++){
             <tr>
                 <td><b>Drugs Used: </b><?php echo $case_data[0][11]?></td>
             </tr>
-            <!-- ADD LINK TO DRUG DB HERE -->
         </table>
+
+        <?php
+            $drug_search = preg_replace( '/[\W]/', ' ', $case_data[0][11]);
+            $drug_search = trim(preg_replace('!\s+!', ' ', $drug_search));
+            $array_of_words = array();
+            $array_of_words = explode(" ", $drug_search);
+            
+            echo "<br>";
+            echo "<form action='view_drug.php' method='POST'>";
+            echo "<table style='width: auto'>";
+            for($i=0;$i<=count($array_of_words);$i++){
+                $search_query = "SELECT name FROM drugs WHERE name LIKE '$array_of_words[$i]' COLLATE NOCASE";
+                $res = $db->query($search_query);
+                $check = $db->query($search_query);
+
+                
+                if(!empty($check->fetchArray())){
+                    while($row = $res->fetchArray()){
+                        echo "<tr>";
+                            echo "<td style='width:15%'><button type='submit' value=\"$row[0]\" name='btn' id='case_view_btn'>View</button></td>";
+                            echo "<td id='case_info_cell'>" . $row['name'] . "</td>";
+                        echo "</tr>";
+                        }
+                    }
+            }
+            echo "</table>";
+            echo "</form>";
+        ?>
     </div>
+
+    <div id="case_image_info">
+        
+    <?php
+        if(!empty($image_data)){
+            echo "<br><b>Case Images:</b><br>";
+        }
+        for($i=0; $i<sizeof($image_data); $i++){
+            echo "<img style=\"max-width:25%; height:auto\" src=\"./web_images/uploads/" . $image_data[$i][0] . "\"alt=\"failure\">";
+        }
+    ?>
 
 </body>
 
