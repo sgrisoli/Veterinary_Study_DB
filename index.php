@@ -327,7 +327,7 @@
             <option value=name>Name</option>
             <option value=type>Type</option>
             <option value=brand_name>Brand/Generic Name</option>
-            <option value=uses>Applications/Uses</option>
+            <option value=use>Applications/Uses</option>
             <option value=route>Route</option>
             <option value=side_effects>Side Effects</option>
             <option value=interaction>Interaction</option>
@@ -363,7 +363,7 @@
                                 <option value=name>Name</option>
                                 <option value=type>Type</option>
                                 <option value=brand_name>Brand/Generic Name</option>
-                                <option value=uses>Applications/Uses</option>
+                                <option value=use>Applications/Uses</option>
                                 <option value=method>Route</option>
                                 <option value=side_effects>Side Effects</option>
                                 <option value=interaction>Interaction</option>
@@ -441,7 +441,7 @@ $(document).ready(function(){
 
     $('#add_drug_search').click(function(){
         i++;
-        $('#dynamic_drug_search_field').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Query" class="form-control name_list" /></td><td><select name="search_select[]" id="search_select" onchange="popup(value)"><option value="" disabled selected>Select Field</option><option value=name>Name</option><option value=type>Type</option><option value=brand_name>Brand/Generic Name</option><option value=uses>Applications/Uses</option><option value=method>Route</option><option value=side_effects>Side Effects</option><option value=interaction>Interaction</option><option value=mechanism>Mechanism</option><option value=dosing>Dosing</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+        $('#dynamic_drug_search_field').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Query" class="form-control name_list" /></td><td><select name="search_select[]" id="search_select" onchange="popup(value)"><option value="" disabled selected>Select Field</option><option value=name>Name</option><option value=type>Type</option><option value=brand_name>Brand/Generic Name</option><option value=use>Applications/Uses</option><option value=method>Route</option><option value=side_effects>Side Effects</option><option value=interaction>Interaction</option><option value=mechanism>Mechanism</option><option value=dosing>Dosing</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
     });
     
 

@@ -10,7 +10,6 @@
 //Establish connection
 $dir = dirname(getcwd());
 $db = new SQLite3($dir . "/vet_case_study.db");
-//$db = new SQLite3('/Users/stephengrisoli/Desktop/vet_case_db/vet_case_study.db');
 
 //Get number of search fields requested
 $number = count($_GET['name']);

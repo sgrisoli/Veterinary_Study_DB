@@ -2,14 +2,13 @@
 //Retrieve variables from form
 session_start();
 
-echo "<a href=\"../index.php\">Back To Home</a>";
-
 $case_num = $_POST["btn"];
 $delete_case_num = $_POST['delete_btn'];
 $_SESSION['delete_case_num'] = $delete_case_num;
     if(!empty($delete_case_num)){
         header('Location: case_delete/case_delete.php');
     }
+
 
 //establish connection
 $db = new SQLite3('/Users/stephengrisoli/Desktop/vet_case_db/vet_case_study.db');
@@ -22,9 +21,6 @@ $case_data = array();
 while($row = $res->fetchArray()){
     $case_data[] = $row;
 }
-echo "<pre>";
-//print_r($case_data);
-echo "</pre>";
 
 
 //Save image paths from this case to an array
@@ -35,12 +31,14 @@ while($row = $res->fetchArray()){
     $image_data[] = $row;
 }
 
+session_destroy();
 ?>
 
 <html>
 <head>
     <title><?php echo "Case #" .  $case_num . " " . $case_data[0][1] . " the " . $case_data[0][2]?> </title>
     <link rel="stylesheet" href="styles/styles.css">
+    <a href="../index.php">Back To Home</a>
 </head>
 
 <body onload=choose_image()>
