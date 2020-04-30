@@ -49,7 +49,7 @@
         <title>VetCentral</title>
         <div class="header">
             <h1>VetCentral</h1>
-            <h2>Veterinary Study Toolkit and Database
+            <h2>Veterinary Study Toolkit and Database<h2>
         </div>
 
     </head>
